@@ -8,7 +8,7 @@ function Navbar() {
         justifyContent: 'center',
         gap: '20px',
         padding: '10px',
-        background: '#f0f0f0',
+        backgroundColor: '#f0f0f0', // <-- required key
       }}
     >
       <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
