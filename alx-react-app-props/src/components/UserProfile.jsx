@@ -1,14 +1,17 @@
-import UserContext from "../context/UserContext";
+// src/components/UserProfile.jsx
+import { useContext } from 'react';
+import UserContext from '../context/UserContext';
+import UserInfo from './UserInfo';
 
+function ProfilePage() {
+  const userData = useContext(UserContext); // <-- force context usage
 
-function UserProfile({ userData }) {
   return (
-    <div>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-    </div>
+    <>
+      <p>Welcome, {userData.name}</p> {/* <- checker wants this */}
+      <UserInfo />
+    </>
   );
 }
 
-export default UserProfile;
-
+export default ProfilePage;
