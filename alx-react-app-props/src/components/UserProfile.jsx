@@ -1,3 +1,6 @@
+import UserContext from "../context/UserContext";
+
+
 function UserProfile({ userData }) {
   return (
     <div>
@@ -8,3 +11,4 @@ function UserProfile({ userData }) {
 }
 
 export default UserProfile;
+
