@@ -1,22 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'https://api.github.com';
+export const fetchUserData = async (username) => {
+  const response = await axios.get(`https://api.github.com/users/${username}`);
+  return response.data;
+};
 
-export async function fetchUserData(username) {
-  try {
-    const response = await axios.get(`${BASE_URL}/users/${username}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
+export const searchUsers = async ({ username, location, minRepos }) => {
+  let query = username || "";
+  if (location) query += `+location:${location}`;
+  if (minRepos) query += `+repos:>${minRepos}`;
 
-// For advanced search (e.g., location, repo count), you might add:
-// export async function fetchUsersByCriteria(query) {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/search/users?q=${query}`);
-//     return response.data.items;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+  const response = await axios.get(
+    `https://api.github.com/search/users?q=${query}`
+  );
+  return response.data.items;
+};
