@@ -1,12 +1,8 @@
+import HomePage from "./components/HomePage";
+import "./index.css";
+
 function App() {
-  return (
-    <div className="text-center mt-10">
-      <h1 className="text-3xl font-bold text-blue-500">
-        Recipe Sharing Platform 🚀
-      </h1>
-      <p className="text-gray-600">Tailwind is working correctly!</p>
-    </div>
-  )
+  return <HomePage />;
 }
 
-export default App
+export default App;
