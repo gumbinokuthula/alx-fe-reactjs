@@ -1,7 +1,15 @@
-import React from "react";
-import recipes from "../data.json";
+import React, { useState, useEffect } from "react";
 
 const HomePage = () => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    fetch("/src/data.json")
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
+      .catch((err) => console.error("Failed to load recipes:", err));
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">
