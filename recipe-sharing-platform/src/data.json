@@ -2,19 +2,22 @@
   {
     "id": 1,
     "title": "Spaghetti Bolognese",
-    "description": "A classic Italian pasta dish with rich meat sauce.",
+    "summary": "A hearty Italian pasta dish with a rich meat sauce.",
+    "description": "Made with ground beef, tomatoes, onions, and garlic, simmered slowly for deep flavor.",
     "image": "https://via.placeholder.com/300x200.png?text=Spaghetti"
   },
   {
     "id": 2,
     "title": "Chicken Curry",
-    "description": "Spicy and flavorful chicken curry with aromatic spices.",
+    "summary": "A flavorful chicken curry with aromatic spices.",
+    "description": "Tender chicken cooked in a spicy sauce with ginger, garlic, turmeric, and coconut milk.",
     "image": "https://via.placeholder.com/300x200.png?text=Chicken+Curry"
   },
   {
     "id": 3,
     "title": "Vegetable Stir Fry",
-    "description": "Quick and healthy stir-fried veggies in soy sauce.",
+    "summary": "A quick and healthy stir fry with colorful vegetables.",
+    "description": "Broccoli, bell peppers, and carrots stir-fried in soy sauce and sesame oil.",
     "image": "https://via.placeholder.com/300x200.png?text=Veggie+Stir+Fry"
   }
 ]
