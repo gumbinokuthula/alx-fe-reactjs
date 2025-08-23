@@ -1,16 +1,18 @@
 // src/components/RecipeDetail.jsx
 import { useParams, Link } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import recipes from '../data.json';
 
 function RecipeDetail() {
   const { id } = useParams();
   const recipeId = Number(id);
 
-  const recipe = useMemo(
-    () => recipes.find((r) => r.id === recipeId),
-    [recipeId]
-  );
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    const found = recipes.find((r) => r.id === recipeId);
+    setRecipe(found || null);
+  }, [recipeId]);
 
   if (!recipe) {
     return (
@@ -43,11 +45,31 @@ function RecipeDetail() {
           {recipe.summary && (
             <p className="mt-3 text-gray-700">{recipe.summary}</p>
           )}
-          {recipe.description && (
-            <p className="mt-4 text-gray-600 leading-relaxed">
-              {recipe.description}
-            </p>
+
+          {/* Ingredients */}
+          {recipe.ingredients && recipe.ingredients.length > 0 && (
+            <div className="mt-6">
+              <h2 className="text-xl font-semibold">Ingredients</h2>
+              <ul className="list-disc list-inside mt-2 text-gray-700">
+                {recipe.ingredients.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+            </div>
           )}
+
+          {/* Instructions */}
+          {recipe.instructions && recipe.instructions.length > 0 && (
+            <div className="mt-6">
+              <h2 className="text-xl font-semibold">Instructions</h2>
+              <ol className="list-decimal list-inside mt-2 text-gray-700 space-y-1">
+                {recipe.instructions.map((step, idx) => (
+                  <li key={idx}>{step}</li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           <div className="mt-6">
             <Link
               to="/"
