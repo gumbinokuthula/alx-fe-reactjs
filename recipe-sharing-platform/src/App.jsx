@@ -1,7 +1,8 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RecipeDetail from "./pages/RecipeDetail";
+// src/App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import RecipeDetail from './components/RecipeDetail';
+import './index.css';
 
 function App() {
   return (
