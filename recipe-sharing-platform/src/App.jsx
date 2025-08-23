@@ -1,17 +1,14 @@
-// src/App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import RecipeDetail from './components/RecipeDetail';
-import './index.css';
+import AddRecipe from "./components/AddRecipe";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        {/* Other routes */}
+        <Route path="/add" element={<AddRecipe />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
