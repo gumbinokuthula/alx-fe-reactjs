@@ -1,9 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+// Yup validation schema
 const validationSchema = Yup.object({
   username: Yup.string().required("Username is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string().email("Invalid email address").required("Email is required"),
   password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
 });
 
@@ -12,25 +13,32 @@ const FormikForm = () => {
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        console.log("Formik form submitted:", values);
+      onSubmit={(values, { setSubmitting }) => {
+        console.log("Form data:", values);
+        setSubmitting(false);
       }}
     >
-      {() => (
-        <Form className="p-4 max-w-md mx-auto space-y-3 border rounded">
+      {({ isSubmitting }) => (
+        <Form>
           <div>
-            <Field name="username" placeholder="Username" className="w-full p-2 border rounded" />
-            <ErrorMessage name="username" component="p" className="text-red-500" />
+            <label>Username:</label>
+            <Field type="text" name="username" />
+            <ErrorMessage name="username" component="div" style={{ color: "red" }} />
           </div>
+
           <div>
-            <Field name="email" type="email" placeholder="Email" className="w-full p-2 border rounded" />
-            <ErrorMessage name="email" component="p" className="text-red-500" />
+            <label>Email:</label>
+            <Field type="email" name="email" />
+            <ErrorMessage name="email" component="div" style={{ color: "red" }} />
           </div>
+
           <div>
-            <Field name="password" type="password" placeholder="Password" className="w-full p-2 border rounded" />
-            <ErrorMessage name="password" component="p" className="text-red-500" />
+            <label>Password:</label>
+            <Field type="password" name="password" />
+            <ErrorMessage name="password" component="div" style={{ color: "red" }} />
           </div>
-          <button type="submit" className="w-full bg-green-500 text-white py-2 rounded">
+
+          <button type="submit" disabled={isSubmitting}>
             Register
           </button>
         </Form>
